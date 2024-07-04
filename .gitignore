@@ -1,0 +1,9 @@
+# root files
+.DS_Store
+
+# Backend Files
+backend/node_modules/*
+
+# Frontend Files
+frontend/node_modules/*
+frontend/.env.local
