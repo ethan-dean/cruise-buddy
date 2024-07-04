@@ -3,9 +3,8 @@ const { port } = require("./config");
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Start the server.
-const PORT = process.env.PORT || 8080;
-const server = app.listen(PORT, () => {
-    console.log(`App listening on port ${PORT}`);
+const server = app.listen(port, () => {
+    console.log(`App listening on port ${port}`);
     console.log('Press Ctrl+C to quit.');
 });
 

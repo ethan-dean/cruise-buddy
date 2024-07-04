@@ -6,7 +6,6 @@ services:
       args:
       - NODE_ENV=production
       context: ./
-      # target: production
     command: npm run start
     environment:
       - DATABASE_DB=example
@@ -29,7 +28,7 @@ services:
     depends_on:
       - db
   db:
-    # image: mysql:8.0.27
+    # mariadb is basically mysql but faster and smaller.
     image: mariadb:10.6.4-focal
     command: '--default-authentication-plugin=mysql_native_password'
     restart: always

@@ -14,7 +14,7 @@ export default function DashboardLayout() {
         if (isLoaded && !userId) {
             navigate("/sign-in")
         }
-    }, [isLoaded])
+    }, [navigate, userId, isLoaded])
 
     // Layouts returns outlet for children elements to fill in
     return (!isLoaded) ? (<Loading />) : (

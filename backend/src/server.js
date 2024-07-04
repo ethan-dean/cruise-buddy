@@ -4,7 +4,13 @@ const app = express();
 const morgan = require("morgan"); // Morgan provides easy logging for express on docker.
 app.use(morgan("common"));        // By default it logs to stdout.
 
+const path = require('path');
+
 const database = require("./database");
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// TODO: Setup database responses
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Make sure that any request that does not matches a static file
@@ -17,11 +23,11 @@ app.use((req, res, next) => {
     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
     res.header('Expires', '-1');
     res.header('Pragma', 'no-cache');
-    res.sendFile(path.resolve('../dist/index.html'));
+    res.sendFile(path.resolve('./dist/index.html'));
   }
 });
 
-app.use(express.static(path.resolve('../dist')));
+app.use(express.static(path.resolve('./dist')));
 
 app.use((req, res) => {
     res.status(200).send('React broken :(');
@@ -30,7 +36,7 @@ app.use((req, res) => {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Health check for app.
 app.get("/healthz", function(req, res) {
-  // TODO: do app logic here to determine if app is truly healthy
+  // TODO: Do app logic here to determine if app is truly healthy
   // should be able to restrict this to localhost (include ipv4 and ipv6)
   res.send("I am happy and healthy\n");
 });
