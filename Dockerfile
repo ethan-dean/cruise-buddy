@@ -38,7 +38,7 @@ COPY backend .
 COPY --from=frontend /frontend/dist ./dist
 
 # Get certificates
-COPY /etc/letsencrypt/live/thecruiseconnect.com /etc/letsencrypt/live/thecruiseconnect.com
+COPY /certs /certs
 RUN update-ca-certificates
 
 # Expose the port that the application listens on.
