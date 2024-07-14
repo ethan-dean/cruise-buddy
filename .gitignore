@@ -3,6 +3,7 @@
 
 # Backend Files
 backend/node_modules/*
+backend/certs/privkey.pem
 
 # Frontend Files
 frontend/node_modules/*

@@ -7,6 +7,7 @@
 ### Backend Dev Setup
 1. Pull from GitHub
 2. Run "npm install" or "npm ci" for backend dependencies
+3. Create `certs/privkey.pem` and place private SSL key inside
 
 # Docker Setup
 ### Docker Image
