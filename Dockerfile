@@ -38,8 +38,8 @@ COPY backend .
 COPY --from=frontend /frontend/dist ./dist
 
 # Get certificates
-COPY /certs /certs
-RUN update-ca-certificates
+# COPY certs certs
+# RUN update-ca-certificates
 
 # Expose the port that the application listens on.
 EXPOSE 80 443

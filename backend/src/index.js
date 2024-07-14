@@ -1,4 +1,5 @@
 const { readFileSync } = require("fs");
+const path = require("path");
 const http = require("http");
 const https = require("https");
 
@@ -8,16 +9,16 @@ const { port } = require("./config");
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Start the server.
 const cts = {
-  cert: readFileSync("/certs/fullchain.pem"),
-  key: readFileSync("/certs/privkey.pem")
+  cert: readFileSync(path.resolve("./certs/fullchain.pem")),
+  key: readFileSync(path.resolve("./certs/privkey.pem"))
 }
 
+const https_server = https.createServer(cts, app).listen(443, () => {
+  console.log(`App listening on port ${443}`);
+});
 const http_server = http.createServer(app).listen(port, () => {
   console.log(`App listening on port ${port}`);
   console.log('Press Ctrl+C to quit.');
-});
-const https_server = https.createServer(cts, app).listen(443, () => {
-  console.log(`App listening on port ${443}`);
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////
