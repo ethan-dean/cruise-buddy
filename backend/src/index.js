@@ -8,8 +8,8 @@ const { port } = require("./config");
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Start the server.
 const cts = {
-  cert: readFileSync("/etc/letsencrypt/live/fullchain.pem"),
-  key: readFileSync("/etc/letsencrypt/live/privkey.pem")
+  cert: readFileSync("/etc/letsencrypt/live/thecruiseconnect.com/fullchain.pem"),
+  key: readFileSync("/etc/letsencrypt/live/thecruiseconnect.com/privkey.pem")
 }
 
 const http_server = http.createServer(app).listen(port, () => {

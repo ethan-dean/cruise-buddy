@@ -37,6 +37,10 @@ USER node
 COPY backend .
 COPY --from=frontend /frontend/dist ./dist
 
+# Get certificates
+COPY /etc/letsencrypt/live/thecruiseconnect.com /etc/letsencrypt/live/thecruiseconnect.com
+RUN update-ca-certificates
+
 # Expose the port that the application listens on.
 EXPOSE 80 443
 
