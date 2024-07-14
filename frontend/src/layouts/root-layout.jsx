@@ -21,7 +21,7 @@ export default function RootLayout() {
       <header className="header">
         <SignedOut>
           <div>
-            <Link className="logo" to="/" >Cruise Buddy</Link>
+            <Link className="logo" to="/" >Cruise Connect</Link>
           </div>
           <div className="header-options-container">
             <Link className="sign-in-btn" to="/sign-in">Sign In</Link>
@@ -31,7 +31,7 @@ export default function RootLayout() {
 
         <SignedIn>
           <div>
-              <Link className="logo" to="/dashboard" >Cruise Buddy</Link>
+              <Link className="logo" to="/dashboard" >Cruise Connect</Link>
           </div>
           <div className="header-options-container">
               <Link className="dashboard-btn" to="/dashboard">Dashboard</Link>

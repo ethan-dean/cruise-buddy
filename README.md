@@ -1,14 +1,16 @@
-# Cruise Buddy
-### Frontend Setup
+# Cruise Connect
+### Frontend Dev Setup
 1. Pull from GitHub
 2. Run "npm install" or "npm ci" for frontend dependencies
 3. Create `.env.local` and place clerk key inside
 
-### Backend Setup
+### Backend Dev Setup
 1. Pull from GitHub
 2. Run "npm install" or "npm ci" for backend dependencies
 
 # Docker Setup
+### Docker Image
+1.
 ### Docker Commands
 - `docker build -t [PROJ_NAME] .`
   - Builds image from Dockerfile in current directory (.)

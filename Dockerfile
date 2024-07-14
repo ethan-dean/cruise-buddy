@@ -24,7 +24,7 @@ FROM node:${NODE_VERSION}-alpine AS backend
 ENV NODE_ENV=production
 
 # Set working directory for app.
-WORKDIR /usr/src/cruise-buddy
+WORKDIR /usr/src/cruise-connect
 
 # Copy package and package-lock to install dependencies.
 COPY backend/package*.json .
