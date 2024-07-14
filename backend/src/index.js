@@ -1,11 +1,23 @@
+const { readFileSync } = require("fs");
+const http = require("http");
+const https = require("https");
+
 const app = require("./server");
 const { port } = require("./config");
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Start the server.
-const server = app.listen(port, () => {
-    console.log(`App listening on port ${port}`);
-    console.log('Press Ctrl+C to quit.');
+const cts = {
+  cert: readFileSync("/etc/letsencrypt/live/fullchain.pem"),
+  key: readFileSync("/etc/letsencrypt/live/privkey.pem")
+}
+
+const http_server = http.createServer(app).listen(port, () => {
+  console.log(`App listening on port ${port}`);
+  console.log('Press Ctrl+C to quit.');
+});
+const https_server = https.createServer(cts, app).listen(443, () => {
+  console.log(`App listening on port ${443}`);
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -32,7 +44,14 @@ process.on("SIGTERM", function onSigterm() {
 
 // Shut down server.
 function shutdown() {
-  server.close(function onServerClosed(err) {
+  http_server.close((err) => {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    process.exit(0);
+  });
+  https_server.close((err) => {
     if (err) {
       console.error(err);
       process.exit(1);

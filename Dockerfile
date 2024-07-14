@@ -38,7 +38,7 @@ COPY backend .
 COPY --from=frontend /frontend/dist ./dist
 
 # Expose the port that the application listens on.
-EXPOSE 8080
+EXPOSE 80 443
 
 # Run the application.
 CMD [ "npm", "run", "start" ]
