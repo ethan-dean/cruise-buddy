@@ -3,7 +3,7 @@ const path = require("path");
 const http = require("http");
 const https = require("https");
 
-const app = require("./server");
+const { app, httpRedirectApp } = require("./server");
 const { port } = require("./config");
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -16,8 +16,8 @@ const cts = {
 const https_server = https.createServer(cts, app).listen(443, () => {
   console.log(`App listening on port ${443}`);
 });
-const http_server = http.createServer(app).listen(port, () => {
-  console.log(`App listening on port ${port}`);
+const http_server = http.createServer(httpRedirectApp).listen(port, () => {
+  console.log(`Http redirect app listening on port ${port}`);
   console.log('Press Ctrl+C to quit.');
 });
 

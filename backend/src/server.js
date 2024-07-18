@@ -1,4 +1,5 @@
 const express = require("express");
+const httpRedirectApp = express();
 const app = express();
 
 const morgan = require("morgan"); // Morgan provides easy logging for express on docker.
@@ -41,4 +42,13 @@ app.get("/healthz", function(req, res) {
   res.send("I am happy and healthy\n");
 });
 
-module.exports = app;
+///////////////////////////////////////////////////////////////////////////////////////////
+// Http Redirect to Https
+httpRedirectApp.get("*", function(req, res) {
+  res.redirect("https://" + req.headers.host + req.path);
+});
+
+module.exports = {
+  app,
+  httpRedirectApp,
+};
