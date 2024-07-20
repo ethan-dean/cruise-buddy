@@ -23,6 +23,7 @@
 - `docker compose up -f compose.yaml -f compose.dev.yaml up`
   - Runs a dev container of the image using specified overrides in compose.dev
   - Opens port 8080 to access server (make sure *[allow insecure localhost](chrome://flags/#allow-insecure-localhost)* is enabled)
+    - Connect to https://localhost:8080 with https
 - `docker compose down`
   - Gracefully shuts down a container in current directory
 - `docker init`

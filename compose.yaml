@@ -3,8 +3,6 @@
 services:
   backend:
     build:
-      args:
-      - NODE_ENV=production
       context: ./
     command: npm run start
     environment:
@@ -12,7 +10,6 @@ services:
       - DATABASE_USER=root
       - DATABASE_PASSWORD=/run/secrets/db-password
       - DATABASE_HOST=db
-      - NODE_ENV=production
     ports:
       - 80:80
       - 443:443
@@ -20,14 +17,8 @@ services:
       - db
     networks:
       - private
-      # - public
     secrets:
       - db-password
-    # volumes:
-    #   - ./backend/src:/code/src:ro
-    #   - ./backend/package.json:/code/package.json
-    #   - ./backend/package-lock.json:/code/package-lock.json
-    #   - back-notused:/opt/app/node_modules
   db:
     image: mariadb:10.6.4-focal # mariadb is mysql but faster and smaller.
     container_name: user_data_db
@@ -43,10 +34,8 @@ services:
     secrets:
       - db-password
 networks:
-  # public:
   private:
 volumes:
-  # back-notused:
   db-data:
 secrets:
   db-password:
