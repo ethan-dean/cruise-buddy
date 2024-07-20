@@ -13,11 +13,11 @@ const cts = {
   key: readFileSync(path.resolve("./certs/privkey.pem"))
 }
 
-const https_server = https.createServer(cts, app).listen(443, () => {
-  console.log(`App listening on port ${443}`);
+const https_server = https.createServer(cts, app).listen(port, () => {
+  console.log(`App listening on port ${port}`);
 });
-const http_server = http.createServer(httpRedirectApp).listen(port, () => {
-  console.log(`Http redirect app listening on port ${port}`);
+const http_server = http.createServer(httpRedirectApp).listen(80, () => {
+  console.log(`Http redirect app listening on port ${80}`);
   console.log('Press Ctrl+C to quit.');
 });
 

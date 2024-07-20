@@ -37,12 +37,8 @@ USER node
 COPY backend .
 COPY --from=frontend /frontend/dist ./dist
 
-# Get certificates
-# COPY certs certs
-# RUN update-ca-certificates
-
 # Expose the port that the application listens on.
-EXPOSE 80 443
+EXPOSE 80 443 8080
 
 # Run the application.
 CMD [ "npm", "run", "start" ]

@@ -10,7 +10,7 @@
 3. Create `certs/privkey.pem` and place private SSL key inside
 
 # Docker Setup
-### Docker Image
+### Docker Image Registry
 1.
 ### Docker Commands
 - `docker build -t [PROJ_NAME] .`
@@ -20,6 +20,9 @@
   - Runs a container of the image (creates container if one does not exist yet)
   - **"--build"** Builds image from Dockerfile in current directory with deafult name 
   - **"-d"** Runs the container in the background, not hanging your command line
+- `docker compose up -f compose.yaml -f compose.dev.yaml up`
+  - Runs a dev container of the image using specified overrides in compose.dev
+  - Opens port 8080 to access server (make sure *[allow insecure localhost](chrome://flags/#allow-insecure-localhost)* is enabled)
 - `docker compose down`
   - Gracefully shuts down a container in current directory
 - `docker init`
