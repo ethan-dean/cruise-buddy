@@ -5,21 +5,21 @@ services:
     build:
       context: ./
     command: npm run start
-    environment:
-      - DATABASE_DB=example
-      - DATABASE_USER=root
-      - DATABASE_PASSWORD=/run/secrets/db-password
-      - DATABASE_HOST=db
+    # environment:
+      # - DATABASE_DB=mariadb
+      # - DATABASE_USER=root
+      # - DATABASE_PASSWORD=/run/secrets/db-password
+      # - DATABASE_HOST=db
     ports:
       - 80:80
       - 443:443
     depends_on:
-      - db
+      - db_service
     networks:
       - private
     secrets:
       - db-password
-  db:
+  db_service:
     image: mariadb:10.6.4-focal # mariadb is mysql but faster and smaller.
     container_name: user_data_db
     volumes:
@@ -28,7 +28,7 @@ services:
       - private
     # environment:
     #   - MYSQL_DATABASE=example
-    #   - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
+      # - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
     # command: '--default-authentication-plugin=mysql_native_password'
     # restart: always
     secrets:

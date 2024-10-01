@@ -24,6 +24,10 @@
   - Runs a dev container of the image using specified overrides in compose.dev
   - Opens port 8080 to access server (make sure *[allow insecure localhost](chrome://flags/#allow-insecure-localhost)* is enabled)
     - Connect to https://localhost:8080 with https
+- `docker exec -it user_data_db mariadb --user root -p[DB_PASS]`
+  - Connect to running database container to query it
+- `docker rm $(docker container ls -a -q) && docker rmi $(docker image ls -a -q)`
+  - Remove all docker containers and images for fresh restart
 - `docker compose down`
   - Gracefully shuts down a container in current directory
 - `docker init`
@@ -54,3 +58,8 @@ Then, push it to your registry, e.g. `docker push myregistry.com/myapp`.
   - [Docker's AwesomeCompose Repo](https://github.com/docker/awesome-compose)
   - [Docker's React/Express/MySQL Repo](https://github.com/docker/awesome-compose/tree/master/react-express-mysql)
 - [Docker's .dockerignore guide](https://docs.docker.com/go/build-context-dockerignore/)
+
+
+### Docker Dev Commands
+- `docker compose down; docker rm $(docker container ls -a -q) || echo "No containers to remove"; docker rmi $(docker image ls -a -q) || echo "No images to remove";  docker compose -f compose.yaml -f compose.dev.yaml up -d`
+  - Full reset and run of docker container to test backend changes

@@ -4,6 +4,7 @@
 # Backend Files
 backend/node_modules/*
 backend/certs/privkey.pem
+backend/src/.env
 
 # Frontend Files
 frontend/node_modules/*

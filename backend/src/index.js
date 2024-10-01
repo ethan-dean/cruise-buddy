@@ -3,8 +3,8 @@ const path = require("path");
 const http = require("http");
 const https = require("https");
 
-const { app, httpRedirectApp } = require("./server");
-const { port } = require("./config");
+const { httpsServerApp, httpRedirectApp } = require("./server");
+const { httpsServerPort, httpRedirectPort } = require("./config");
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Start the server.
@@ -12,12 +12,11 @@ const cts = {
   cert: readFileSync(path.resolve("./certs/fullchain.pem")),
   key: readFileSync(path.resolve("./certs/privkey.pem"))
 }
-
-const https_server = https.createServer(cts, app).listen(port, () => {
-  console.log(`App listening on port ${port}`);
+const https_server = https.createServer(cts, httpsServerApp).listen(httpsServerPort, () => {
+  console.log(`Https server app listening on port ${httpsServerPort}`);
 });
-const http_server = http.createServer(httpRedirectApp).listen(80, () => {
-  console.log(`Http redirect app listening on port ${80}`);
+const http_server = http.createServer(httpRedirectApp).listen(httpRedirectPort, () => {
+  console.log(`Http redirect app listening on port ${httpRedirectPort}`);
   console.log('Press Ctrl+C to quit.');
 });
 

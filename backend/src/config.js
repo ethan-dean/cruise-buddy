@@ -4,17 +4,22 @@ const readFileSync = filename => fs.readFileSync(filename).toString("utf8");
 
 // Constants set in "compose.yaml".
 module.exports = {
-  database: {
-    host: process.env.DATABASE_HOST || "localhost",
-    port: process.env.DATABASE_PORT,
-    database: process.env.DATABASE_DB,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD
-      ? readFileSync(process.env.DATABASE_PASSWORD)
-      : null
+  connectionConfig: {
+    host: 'db_service', // or the host of your MariaDB server
+    user: 'root', // your MariaDB username
+    password: 'temp', // your MariaDB password
+    database: 'example', // your target database
+    port: 3306
+
+    // database: process.env.DATABASE_DB || 'example',
+    // host: process.env.DATABASE_HOST || "localhost",
+    // port: process.env.DATABASE_PORT || 3306,
+    // user: process.env.DATABASE_USER || "root",
+    // password: "temp"
+    // process.env.DATABASE_PASSWORD
+    //   ? readFileSync(process.env.DATABASE_PASSWORD)
+    //   : null
   },
-  port: process.env.PORT || 443
-  // If you're not using docker compose for local development, this will default to 8080
-  // to prevent non-root permission problems with 80. Dockerfile is set to make this 80
-  // because containers don't have that issue.
+  httpsServerPort: 443,
+  httpRedirectPort: 80,
 };
